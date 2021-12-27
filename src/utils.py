@@ -23,10 +23,10 @@ def check_ports_avail(host, list_ports, verbose=True):
                 print("Not all ports are available; quitting!")
             return(False)
 
-        if verbose:
-            print("all ports available")
+    if verbose:
+        print("all ports available")
 
-        return(True)
+    return(True)
 
 
 def bash_check_avail(first_port, n_ports):

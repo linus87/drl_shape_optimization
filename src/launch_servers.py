@@ -21,6 +21,8 @@ if host == 'None':
 
 list_ports = [ind_server + ports_start for ind_server in range(number_servers)]
 
+print("To be used ports:{}".format(list_ports));
+
 # check for the availability of the ports
 if not check_ports_avail(host, list_ports):
     quit()
@@ -53,17 +55,19 @@ for rank in range(number_servers):
 def launch_one_server(rank, host, port):
     os.system('cd env_{} && python3 start_one_server.py -t {} -p {}'.format(rank, host, port))	        
 
+
 processes = []
 
 # launch all the servers one after the other
-for rank, port in enumerate(list_ports):
-    print("launching process of rank {}".format(rank))
-    proc = Process(target=launch_one_server, args=(rank, host, port))
-    proc.start()
-    processes.append(proc)
-    time.sleep(2.0)  # just to avoid collisions in the terminal printing
+if __name__ == '__main__':
+    for rank, port in enumerate(list_ports):
+        print("launching process of rank {}".format(rank))
+        proc = Process(target=launch_one_server, args=(rank, host, port))
+        proc.start()
+        processes.append(proc)
+        time.sleep(2.0)  # just to avoid collisions in the terminal printing
 
-print("all processes started, ready to serve...")
+    print("all processes started, ready to serve...")
 
-for proc in processes:
-    proc.join()
+    for proc in processes:
+        proc.join()

@@ -11,13 +11,13 @@ It is based on Tensorforce for the DRL components, and on Fenics for the CFD com
 
 ## What is in the repo
 
-- The parameterization of the DRL problem can be done in ```parametered_env.py```.
+- The parameterization of the DRL problem can be done in ``parametered_env.py``.
 
-- If you wish to modify the reward computation, you should check the function ```compute_reward``` in ```environment.py```.
+- If you wish to modify the reward computation, you should check the function ``compute_reward`` in ``environment.py``.
 
-- The ```reset``` folder contains the initial shape that is loaded as initial state at the beginning of each episode. As of now, only the 4-points initial shape is present. You can generate more initial cylinders with different point numbers using the ```generate_shape.py``` file.
+- The ``reset`` folder contains the initial shape that is loaded as initial state at the beginning of each episode. As of now, only the 4-points initial shape is present. You can generate more initial cylinders with different point numbers using the ``generate_shape.py`` file.
 
-- The parallel learning generates copies of the environment in separate folders. To concatenate all the results in a linear history, you can run ```sort_envs.py``` periodically. All the results will be summed up in a ```sorted_envs``` folder. You should be aware that the "sorted numbering" of a shape can change from one sorting run to another.
+- The parallel learning generates copies of the environment in separate folders. To concatenate all the results in a linear history, you can run ```sort_envs.py periodically. All the results will be summed up in a ```sorted_envs``` folder. You should be aware that the "sorted numbering" of a shape can change from one sorting run to another.
 
 - The CFD solver is contained in the ```fenics_solver.py``` file.
 
